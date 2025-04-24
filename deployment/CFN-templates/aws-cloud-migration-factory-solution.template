@@ -5525,6 +5525,23 @@ Resources:
         LambdaRuntimePython: !FindInMap ["Solution", "LambdaRuntime", "Python"]
         PipelineTaskExecutionOutputLambdaARN: !GetAtt LambdaFunctionPipelineTaskExecutionOutput.Arn
 
+  RescheduleService:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub
+       - 'https://${S3Bucket}-reference.s3.amazonaws.com/${KeyPrefix}/aws-cloud-migration-factory-solution-reschedule.template'
+       -  S3Bucket: !FindInMap ["SourceCode", "General", "S3Bucket"]
+          KeyPrefix: !FindInMap ["SourceCode", "General", "KeyPrefix"]
+      Parameters:
+        Environment: !Ref Environment
+        SolutionPrefix: !Ref Application
+        UserPoolId: !Ref CognitoUserPool
+        UserPoolClientId: !Ref CognitoAppClient
+        ApiGatewayId: !Ref UserAPI
+        ApiGatewayRootResourceId: !GetAtt UserAPI.RootResourceId
+        LambdaRoleArn: !GetAtt ItemsLambdaRole.Arn
+        LogRetention: 30
+
   ReplatformService:
     Type: AWS::CloudFormation::Stack
     DependsOn:
@@ -5796,6 +5813,14 @@ Resources:
         !Ref AutomationService
       ResourceType: CFN_STACK
 
+  AppRegistryApplicationStackAssociationNestedStackRescheduleService:
+    Type: AWS::ServiceCatalogAppRegistry::ResourceAssociation
+    Properties:
+      Application: !GetAtt AppRegistryApplication.Id
+      Resource:
+        !Ref RescheduleService
+      ResourceType: CFN_STACK
+
   AppRegistryApplicationStackAssociationNestedStackReplatformService:
     Type: AWS::ServiceCatalogAppRegistry::ResourceAssociation
     Condition: ReplatformEC2
@@ -5914,6 +5939,11 @@ Outputs:
     Export:
       Name: !Sub "${AWS::StackName}-LoginApiRequestValidatorId"
 
+  RescheduleRequestsApiEndpoint:
+    Description: 'Reschedule Requests API Endpoint'
+    Value: !GetAtt
+      - RescheduleService
+      - Outputs.RescheduleRequestsApiEndpoint
   UserAPIRequestValidatorId:
     Description: "ID of the Admin API Request Validator"
     Value: !Ref UserAPIRequestValidator

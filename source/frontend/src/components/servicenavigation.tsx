@@ -101,6 +101,11 @@ const itemsUser = [
     text: "Automation",
     items: [],
   },
+  {
+    type: "section",
+    text: "Migration Planning",
+    items: [],
+  },
   { type: "divider" },
   {
     type: "link",
