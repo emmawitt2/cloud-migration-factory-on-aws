@@ -10,8 +10,7 @@ import tempfile
 import zipfile
 
 import cmf_boto
-from botocore.vendored import requests
-#import requests
+import requests
 from botocore.exceptions import ClientError
 from cmf_logger import logger, log_event_received
 

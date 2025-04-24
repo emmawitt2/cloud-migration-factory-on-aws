@@ -13,8 +13,8 @@ import re
 import tempfile
 
 import cmf_boto
-from cmf_utils import cors, default_http_headers
-from cmf_logger import logger, log_event_received
+from cmf_utils import default_http_headers
+from cmf_logger import log_event_received
 
 headers = {'Content-Type': 'application/json'}
 

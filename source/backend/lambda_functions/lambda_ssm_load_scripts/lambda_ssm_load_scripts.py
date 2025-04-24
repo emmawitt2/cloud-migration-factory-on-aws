@@ -8,8 +8,7 @@ import uuid
 import base64
 import shutil
 import zipfile
-from botocore.vendored import requests
-#import requests
+import requests
 import tempfile
 import jmespath
 import cmf_boto

@@ -6,7 +6,7 @@ import json
 import os
 
 import cmf_boto
-from cmf_logger import logger, log_event_received
+from cmf_logger import log_event_received
 from cmf_utils import cors
 
 default_http_headers = {

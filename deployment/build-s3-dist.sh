@@ -21,6 +21,7 @@
 #
 #  - version-code: version of the package
 
+
 start_time=$SECONDS
 
 # Check to see if input has been provided:
@@ -97,6 +98,7 @@ echo "[Packing] Core Lambda functions"
 echo "------------------------------------------------------------------------------"
 
 cd $source_dir/backend/lambda_functions/
+export POETRY_HOME=$HOME/.local
 for d in */ ; do
     echo "$d"
     cd $source_dir/backend/lambda_functions/$d
