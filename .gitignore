@@ -29,6 +29,7 @@ ehthumbs.db
 /deployment/global-s3-assets/*
 /deployment/regional-s3-assets/*
 /source/backend/lambda_layers/lambda_layer_py_pkgs/.build
+/deployment/.venv/*
 
 #SonarQube
 /.scannerwork/*
