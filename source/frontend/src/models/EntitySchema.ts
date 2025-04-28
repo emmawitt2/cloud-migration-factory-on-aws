@@ -3,6 +3,7 @@ import { Database } from "./Database";
 import { Application } from "./Application";
 import { Wave } from "./Wave";
 import { Server } from "./Server";
+import { RescheduleRequest } from "./RescheduleRequest";
 
 export type SchemaMetaData = {
   schema_name: string;
@@ -34,7 +35,8 @@ export type EntityName =
   | "pipeline_template"
   | "pipeline_template_task"
   | "task"
-  | "task_execution";
+  | "task_execution"
+  | "reschedule_request";
 
 export type Attribute = {
   sample_data_intake?: any;
@@ -82,6 +84,7 @@ export type BaseData = {
   secret?: DataLoadingState<any>;
   script?: DataLoadingState<any>;
   database?: DataLoadingState<Database>;
+  reschedule_request?: DataLoadingState<RescheduleRequest>;
   server?: DataLoadingState<Server>;
   application?: DataLoadingState<Application>;
   wave?: DataLoadingState<Wave>;

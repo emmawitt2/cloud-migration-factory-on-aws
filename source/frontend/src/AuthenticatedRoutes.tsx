@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import UserTableApps from "./containers/UserTableApps";
 import UserServerTable from "./containers/UserTableServers";
 import UserDatabaseTable from "./containers/UserTableDatabases";
+import UserRescheduleRequestsTable from "./containers/UserTableRescheduleRequests";
 import UserWaveTable from "./containers/UserTableWaves";
 import UserAutomationJobs from "./containers/UserAutomationJobs";
 import UserAutomationScripts from "./containers/UserAutomationScripts";
@@ -58,6 +59,10 @@ export default ({ childProps }: { childProps: AppChildProps }) => {
       <Route path="/databases/:id" element={<UserDatabaseTable {...childProps} />} />
       <Route path="/databases/add" element={<UserDatabaseTable {...childProps} />} />
       <Route path="/databases/edit/:id" element={<UserDatabaseTable {...childProps} />} />
+      <Route path="/reschedule_requests" element={<UserRescheduleRequestsTable {...childProps} />} />
+      <Route path="/reschedule_requests/:id" element={<UserRescheduleRequestsTable {...childProps} />} />
+      <Route path="/reschedule_requests/add" element={<UserRescheduleRequestsTable {...childProps} />} />
+      <Route path="/reschedule_requests/edit/:id" element={<UserRescheduleRequestsTable {...childProps} />} />
       <Route path="/pipeline_templates" element={<UserTablePipelineTemplates {...childProps} />} />
       <Route path="/pipeline_templates/import" element={<PipelineTemplatesImport {...childProps} />} />
       <Route path="/pipeline_templates/:id" element={<UserTablePipelineTemplates {...childProps} />} />

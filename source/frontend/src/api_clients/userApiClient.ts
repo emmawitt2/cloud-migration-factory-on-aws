@@ -31,6 +31,10 @@ export default class UserApiClient {
     return API.get(this.apiName, "/user/database", {});
   }
 
+  getRescheduleRequests() {
+    return API.get(this.apiName, "/user/reschedule_request", {});
+  }
+
   getPipelines() {
     return API.get(this.apiName, "/user/pipeline", {});
   }

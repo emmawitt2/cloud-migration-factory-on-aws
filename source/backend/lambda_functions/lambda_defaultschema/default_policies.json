@@ -552,6 +552,49 @@
             "create": {
               "BOOL": true
             },
+            "update": {
+              "BOOL": true
+            },
+            "attributes": {
+              "L": [
+                {
+                  "M": {
+                    "attr_type": {
+                      "S": "reschedule_request"
+                    },
+                    "attr_name": {
+                      "S": "reschedule_request_id"
+                    }
+                  }
+                },
+                {
+                  "M": {
+                    "attr_type": {
+                      "S": "reschedule_request"
+                    },
+                    "attr_name": {
+                      "S": "app_id"
+                    }
+                  }
+                }
+              ]
+            },
+            "schema_name": {
+              "S": "reschedule_request"
+            },
+            "read": {
+              "BOOL": true
+            },
+            "delete": {
+              "BOOL": true
+            }
+          }
+        },
+        {
+          "M": {
+            "create": {
+              "BOOL": true
+            },
             "schema_name": {
               "S": "mgn"
             }

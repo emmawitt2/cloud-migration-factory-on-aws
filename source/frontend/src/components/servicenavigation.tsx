@@ -45,20 +45,22 @@ function ServiceNavigation(props: ServiceNavigationProps) {
         //Add user schemas to the navigation.
 
         for (const schema of props.schemaMetadata) {
-          if (schema["schema_type"] === "user") {
-            //Only add user schemas to navigation.
-            if (["pipeline", "pipeline_template"].includes(schema["schema_name"])) {
-              automationItems.push({
-                type: "link",
-                text: schema["friendly_name"] ? schema["friendly_name"] : capitalizeAndPluralize(schema["schema_name"]),
-                href: "/" + schema["schema_name"] + "s",
-              });
-            } else {
-              navSchemaItems.push({
-                type: "link",
-                text: schema["friendly_name"] ? schema["friendly_name"] : capitalize(schema["schema_name"]),
-                href: "/" + schema["schema_name"] + "s",
-              });
+          if (schema["schema_name"] !== "reschedule_request") {
+            if (schema["schema_type"] === "user") {
+              //Only add user schemas to navigation.
+              if (["pipeline", "pipeline_template"].includes(schema["schema_name"])) {
+                automationItems.push({
+                  type: "link",
+                  text: schema["friendly_name"] ? schema["friendly_name"] : capitalizeAndPluralize(schema["schema_name"]),
+                  href: "/" + schema["schema_name"] + "s",
+                });
+              } else {
+                navSchemaItems.push({
+                  type: "link",
+                  text: schema["friendly_name"] ? schema["friendly_name"] : capitalize(schema["schema_name"]),
+                  href: "/" + schema["schema_name"] + "s",
+                });
+              }
             }
           }
         }
@@ -104,7 +106,9 @@ const itemsUser = [
   {
     type: "section",
     text: "Migration Planning",
-    items: [],
+    items: [
+      { type: "link", text: "Reschedule Requests", href: "/reschedule_requests" }
+    ],
   },
   { type: "divider" },
   {
@@ -128,6 +132,13 @@ const itemsAdmin = [
     type: "section",
     text: "Automation",
     items: [],
+  },
+  {
+    type: "section",
+    text: "Migration Planning",
+    items: [
+      { type: "link", text: "Reschedule Requests", href: "/reschedule_requests" }
+    ],
   },
   {
     type: "section",

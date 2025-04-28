@@ -1,6 +1,71 @@
 [
   {
     "schema_name": {
+      "S": "reschedule_request"
+    },
+    "schema_type": {
+      "S": "user"
+    },
+    "attributes": {
+      "L": [
+        {
+          "M": {
+            "description": {
+              "S": "Reschedule Request Id"
+            },
+            "hidden": {
+              "BOOL": true
+            },
+            "name": {
+              "S": "reschedule_request_id"
+            },
+            "required": {
+              "BOOL": true
+            },
+            "system": {
+              "BOOL": true
+            },
+            "type": {
+              "S": "string"
+            }
+          }
+        },
+        {
+          "M": {
+            "description": {
+              "S": "Application"
+            },
+            "name": {
+              "S": "app_id"
+            },
+            "type": {
+              "S": "relationship"
+            },
+            "rel_display_attribute": {
+              "S": "app_name"
+            },
+            "rel_entity": {
+              "S": "application"
+            },
+            "rel_key": {
+              "S": "app_id"
+            },
+            "group_order": {
+              "S": "-998"
+            },
+            "required": {
+              "BOOL": true
+            },
+            "system": {
+              "BOOL": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "schema_name": {
       "S": "wave"
     },
     "schema_type": {
@@ -27,6 +92,25 @@
             },
             "type": {
               "S": "string"
+            }
+          }
+        },
+        {
+          "M": {
+            "description": {
+              "S": "Status"
+            },
+            "name": {
+              "S": "status"
+            },
+            "listvalue": {
+              "S": "Not started,Planning,In progress,Completed,Blocked"
+            },
+            "type": {
+              "S": "list"
+            },
+            "group_order": {
+              "S": "-999"
             }
           }
         },

@@ -1307,6 +1307,36 @@ export const mock_admin_api = [
       })
     );
   }),
+  rest.get("/admin/schema/reschedule_request", (request, response, context) => {
+    return response(
+      context.status(200),
+      context.json({
+        schema_type: "user",
+        attributes: [
+          {
+            name: "reschedule_request_id",
+            description: "Reschedule Request Id",
+            system: true,
+            hidden: true,
+            type: "string",
+            required: true,
+          },
+          {
+            rel_display_attribute: "app_name",
+            system: true,
+            rel_key: "app_id",
+            name: "app_id",
+            description: "Application",
+            rel_entity: "application",
+            group_order: "-998",
+            type: "relationship",
+            required: true,
+          }
+        ],
+        schema_name: "database",
+      })
+    );
+  }),
   rest.get("/admin/schema/pipeline_template", (request, response, context) => {
     return response(
       context.status(200),
